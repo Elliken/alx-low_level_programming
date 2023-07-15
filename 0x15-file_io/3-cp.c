@@ -68,21 +68,17 @@ int main(int argc, char *argv[])
 
 	do {
 		if (fr == -1 || tr == -1)
-		{
 			dprintf(STDERR_FILENO,
 				"Error: Can't read from file %s\n", argv[1]);
 			free(buffer);
 			exit(98);
-		}
 
 		wr = write(to, buffer, tr);
 		if (to == -1 || wr == -1)
-		{
 			dprintf(STDERR_FILENO,
 				"Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
-		}
 
 		tr = read(fr, buffer, 1024);
 		to = open(argv[2], O_WRONLY | O_APPEND);
@@ -95,4 +91,3 @@ int main(int argc, char *argv[])
 
 	return (0);
 }
-
